@@ -116,7 +116,37 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
-    return []
+    def top_chars(phrase):
+    top_char_list = []
+    char_dict = {}
+     
+    for char in phrase:
+        if char !=  " ":
+            char_dict[char] = char_dict.get(char, 0) + 1
+    # print(char_dict)
+    # print(char)
+    
+    tuples_list = []
+    results =[]
+
+    for char, value in char_dict.items():
+        pair_tuple = (value, char)
+        tuples_list.append(pair_tuple)
+    # print(sorted(tuples_list, reverse = True))
+    sorted_tuples_list = sorted(tuples_list, reverse = True)
+    
+    biggest = sorted_tuples_list[0][0]
+    # print(biggest)
+    for pair_tuple in sorted_tuples_list:
+        if pair_tuple[0] == biggest:
+            results.append(pair_tuple[1])
+    # print(sorted(results))
+    return sorted(results)
+        
+       
+
+# print(top_chars("The rain in spain stays mainly in the plain."))
+# print(top_chars("Shake it off, shake it off."))
 
 
 def top_chars(phrase):
