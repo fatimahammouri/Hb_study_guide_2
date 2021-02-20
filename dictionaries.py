@@ -41,15 +41,19 @@ def without_duplicates(words):
         >>> type(without_duplicates([111111, 2, 33333, 2]))
         <class 'list'>
     """
-
+    # we create an empty list 
+    # we remove the duplicates with set 
+    # we looop over our list and append to the new list 
     no_duplicates = []
     words = set(words)
     for word in words:
         no_duplicates.append(word)
         #print(no_duplicates)
-
     return no_duplicates
 
+    # a BETTER way to do it 
+    # new_list = sorted(set(words))
+    # return new_list
 
 def find_unique_common_items(items1, items2):
     """Produce the set of *unique* common items in two lists.
@@ -83,7 +87,8 @@ def find_unique_common_items(items1, items2):
         >>> sorted(find_unique_common_items(["2", "1", 2], [2, 1]))
         [2]
     """
-
+    # we remove the duplicates from each list 
+    # we use the Intersection to return the elements in BOTH
     set1 = set(items1)
     set2 = set(items2)
     return set1 & set2
@@ -115,38 +120,7 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
-
-    def top_chars(phrase):
-    top_char_list = []
-    char_dict = {}
-     
-    for char in phrase:
-        if char !=  " ":
-            char_dict[char] = char_dict.get(char, 0) + 1
-    # print(char_dict)
-    # print(char)
-    
-    tuples_list = []
-    results =[]
-
-    for char, value in char_dict.items():
-        pair_tuple = (value, char)
-        tuples_list.append(pair_tuple)
-    # print(sorted(tuples_list, reverse = True))
-    sorted_tuples_list = sorted(tuples_list, reverse = True)
-    
-    biggest = sorted_tuples_list[0][0]
-    # print(biggest)
-    for pair_tuple in sorted_tuples_list:
-        if pair_tuple[0] == biggest:
-            results.append(pair_tuple[1])
-    # print(sorted(results))
-    return sorted(results)
-        
-       
-
-# print(top_chars("The rain in spain stays mainly in the plain."))
-# print(top_chars("Shake it off, shake it off."))
+    return []
 
 
 def top_chars(phrase):
@@ -173,10 +147,37 @@ def top_chars(phrase):
     Do not count spaces, but count all other characters.
 
     """
-    
-    return []
 
+def top_chars(phrase):
+    top_char_list = []
+    char_dict = {}
+        
+    for char in phrase:
+        if char !=  " ":
+            char_dict[char] = char_dict.get(char, 0) + 1
+    print(char_dict)
+    # print(char)
 
+    tuples_list = []
+    results =[]
+
+    for char, value in char_dict.items():
+        pair_tuple = (value, char)
+        tuples_list.append(pair_tuple)
+    # print(sorted(tuples_list, reverse = True))
+    sorted_tuples_list = sorted(tuples_list, reverse = True)
+
+    biggest = sorted_tuples_list[0][0]
+    # print(biggest)
+    for pair_tuple in sorted_tuples_list:
+        if pair_tuple[0] == biggest:
+            results.append(pair_tuple[1])
+    # print(sorted(results))
+    return sorted(results)
+           
+
+# print(top_chars("The rain in spain stays mainly in the plain."))
+# print(top_chars("Shake it off, shake it off."))
 
 #####################################################################
 # You can ignore everything below this.
